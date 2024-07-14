@@ -1,25 +1,20 @@
-import toast, { Toaster } from 'react-hot-toast';
 import { Formik, Form, Field } from 'formik';
+import css from "./SearchBar.module.css"
 
 export default function SearchBar({ onSearch }){
 
 return (
-    <header>
+    <header className={css.searchHeader}>
     <Formik
         initialValues={{ topic: "" }}
         onSubmit={(values, actions) => {
           const trimmedTopic = values.topic.trim();
-          if (trimmedTopic === "") {
-              toast.error("Can not be empty");
-          } else if (trimmedTopic.length < 3) {
-              toast.error("Minimum 3 letters");
-          } else {
               onSearch(trimmedTopic);
               actions.resetForm();
           }
-      }}
+      }
       >
-        <Form>
+        <Form className={css.searchForm}>
           <Field
             type="text"
             autoComplete="off"
@@ -27,7 +22,7 @@ return (
             placeholder="Search by word..."
             name="topic"
           />
-          <button type="submit">Search</button>
+          <button type="submit" className={css.searchBtn}>Search</button>
         </Form>
       </Formik>
   </header>

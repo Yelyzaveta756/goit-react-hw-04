@@ -1,0 +1,36 @@
+.searchHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(244, 241, 241);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+
+.searchBtn {
+    background-color: rgb(172, 172, 233);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    transition: background-color 0.4s;
+}
+
+.searchBtn:hover {
+    background-color: rgb(130, 130, 226)
+}
+
+
+
+
+  
