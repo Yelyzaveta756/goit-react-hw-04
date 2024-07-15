@@ -16,6 +16,7 @@ return (
       >
         <Form className={css.searchForm}>
           <Field
+          className={css.searchInput}
             type="text"
             autoComplete="off"
             autoFocus

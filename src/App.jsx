@@ -5,7 +5,7 @@ import Loader from './components/Loader/Loader'
 import Error  from './components/ErrorMessage/ErrorMessage'
 import { fetchImages } from './httpQuery'
 import toast, { Toaster } from 'react-hot-toast';
-import './App.css'
+import css from "./App.module.css"
 
 export default function App() {
 
@@ -55,7 +55,7 @@ useEffect(() => {
 }, [topic, page]);
  
   return (
-      <div>
+      <div className={css.container}>
       <SearchBar onSearch={handleSearch}/>
       {loading && <Loader loading={loading} />}
       {error && <Error message={error}/>}
