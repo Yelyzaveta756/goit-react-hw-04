@@ -1,9 +1,15 @@
 import css from "./ImageCard.module.css"
 
-export const ImageCard = ({ image }) => {
+export const ImageCard = ({ imageSmallSrc, imageFullSrc, altText, onImageClick}) => {
     return (
-      <div className={css.imageCardContainer}>
-        <img className={css.imageCard} src={image.urls.small} alt={image.description || 'Image'} />
+      <li>
+         <div className={css.imageCardContainer}>
+        <img 
+        className={css.imageCard} 
+        src={imageSmallSrc} 
+        alt={altText || 'Image'}
+        onClick={() => onImageClick({imageFullSrc, altText})} />
       </div>
+      </li>
     );
   };

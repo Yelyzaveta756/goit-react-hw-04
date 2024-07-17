@@ -9,6 +9,7 @@ import { fetchImages } from './httpQuery'
 import toast, { Toaster } from 'react-hot-toast';
 import css from "./App.module.css"
 
+
 export default function App() {
 
 	const [images, setImages] = useState([]);
@@ -18,6 +19,8 @@ export default function App() {
   const [topic, setTopic] = useState("");
   const [loadMore, setLoadMore] = useState(false)
   const [totalPages, setTotalPages] = useState(999);
+  const [imageModal, setImageModal] = useState(false);
+  const [modalData, setModalData] = useState({})
 
   const handleSearch = async (newTopic) => {
     setImages([]);
@@ -32,6 +35,15 @@ export default function App() {
 
 const handleMoreBtn = () => {
   setPage(page + 1)
+}
+
+const handleImageModal = (modalDataFromImageCard) => {
+  setImageModal(!imageModal);
+  setModalData(modalDataFromImageCard);
+};
+
+const handleModalClose = () => {
+  setImageModal(!imageModal);
 }
 
 useEffect(() => {
@@ -77,8 +89,13 @@ useEffect(() => {
       {loading && <Loader loading={loading} />}
       {error && <Error message={error}/>}
       {images.length > 0 && (
-        <ImageGallery images={images}/>)}
+        <ImageGallery images={images} onImageClick={handleImageModal}/>)}
         {loadMore && <LoadMoreBtn onClick={handleMoreBtn}/>}
+        <ImageModal
+          modalData={modalData}
+          isModalOpen={imageModal}
+          onModalClose={handleModalClose}
+        />
         <Toaster />
       </div>
   )
